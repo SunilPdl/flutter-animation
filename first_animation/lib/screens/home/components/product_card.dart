@@ -1,3 +1,5 @@
+import 'package:first_animation/components/favourite_icon.dart';
+import 'package:first_animation/components/price.dart';
 import 'package:first_animation/constants.dart';
 import 'package:first_animation/models/product.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,7 @@ class ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: defaultHeight),
+        padding: EdgeInsets.symmetric(horizontal: defaultPadding),
         decoration: BoxDecoration(
           color: Color(0xFFF7F7F7),
           borderRadius: const BorderRadius.all(
@@ -27,12 +29,22 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: product.title!,
-              child: Image.asset(
-                product.image!,
-                height: 150,
-                width: 150,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+              child: Hero(
+                tag: product.title!,
+                child: Container(
+                  height: 150,
+                  width: 180,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(
+                    product.image!,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
             Text(
@@ -41,6 +53,13 @@ class ProductCard extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Price(amount: 1200),
+                FavBtn(),
+              ],
             ),
           ],
         ),
