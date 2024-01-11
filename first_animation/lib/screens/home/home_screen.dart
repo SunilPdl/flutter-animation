@@ -12,27 +12,33 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Container(
-          color: Color(0xFFEAEAEA),
-          child: Column(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
             children: [
-              HomeHeader(),
-              Expanded(
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                height: MediaQuery.of(context).size.height * 0.08,
+                child: HomeHeader(),
+              ),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.08,
+                left: 0,
+                right: 0,
                 child: Container(
+                  height: MediaQuery.of(context).size.height * 0.8,
                   padding: EdgeInsets.symmetric(
-                      horizontal: defaultPadding, vertical: defaultPadding * 2),
+                      horizontal: defaultPadding, vertical: defaultPadding),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(defaultPadding * 1.5),
-                      bottomRight: Radius.circular(defaultPadding * 1.5),
-                    ),
-                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(defaultPadding),
                   ),
                   child: GridView.builder(
                     itemCount: products.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      childAspectRatio: 2 / 3,
+                      childAspectRatio: 3 / 4,
                       mainAxisSpacing: defaultHeight,
                       crossAxisSpacing: defaultHeight,
                     ),
@@ -41,6 +47,15 @@ class HomeScreen extends StatelessWidget {
                       press: () {},
                     ),
                   ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: MediaQuery.of(context).size.height * 0.08,
+                child: Container(
+                  color: Colors.red,
                 ),
               ),
             ],
