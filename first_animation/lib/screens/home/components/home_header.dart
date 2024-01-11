@@ -7,7 +7,6 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: headerHeight,
       color: Colors.white,
       padding: EdgeInsets.all(defaultPadding),
       child: Row(
