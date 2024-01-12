@@ -1,3 +1,4 @@
+import 'package:first_animation/screens/details/details_screen.dart';
 import 'package:first_animation/screens/home/components/cart_details_card.dart';
 import 'package:first_animation/screens/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,15 @@ class HomeScreen extends StatelessWidget {
                               ),
                               itemBuilder: (context, index) => ProductCard(
                                 product: products[index],
-                                press: () {},
+                                press: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailsScreen(
+                                          product: products[index]),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
