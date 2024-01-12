@@ -40,14 +40,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ],
             ),
           ),
-          SizedBox(height: defaultPadding * 1.5),
+          SizedBox(height: defaultPadding),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+            padding: const EdgeInsets.symmetric(horizontal: defaultPadding * 2),
             child: Row(
               children: [
                 Expanded(
                   child: Text(
-                    widget.product.title!.toUpperCase(),
+                    widget.product.title!,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 22,
@@ -59,7 +59,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(defaultPadding),
+            padding: const EdgeInsets.all(defaultPadding * 2),
             child: Text(
               "Wearing proper walking shoes is a fundamental element in maintaining the correct walking technique, as well as preventing injury. Shoes are tools. Without the correct tools, you are likely to hurt yourself, making you more prone to suffer further and more severe injuries in the future.A shoe is a type of footwear. It is an item of clothing. You can wear them outside. Shoes come in pairs, with one shoe for each foot. People usually wear shoes in public. They are worn for hygiene, style, and comfort. While there are some shoes that don't need socks to wear, shoes are usually worn with socks.",
               textAlign: TextAlign.justify,
@@ -83,12 +83,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        "Fruits",
-        style: TextStyle(color: Colors.black),
+        "Shoes",
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       actions: [
         FavBtn(radius: 20),
-        SizedBox(width: defaultPadding),
+        SizedBox(width: defaultPadding * 2),
       ],
     );
   }
