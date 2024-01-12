@@ -1,5 +1,7 @@
 import 'package:first_animation/screens/details/details_screen.dart';
 import 'package:first_animation/screens/home/components/cart_details_card.dart';
+import 'package:first_animation/screens/home/components/cart_details_views.dart';
+import 'package:first_animation/screens/home/components/cart_short_view.dart';
 import 'package:first_animation/screens/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:first_animation/constants.dart';
@@ -76,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                                     context,
                                     PageRouteBuilder(
                                       transitionDuration:
-                                          const Duration(microseconds: 500),
+                                          const Duration(microseconds: 900),
                                       reverseTransitionDuration:
                                           const Duration(microseconds: 500),
                                       pageBuilder: (context, animation,
@@ -110,7 +112,15 @@ class HomeScreen extends StatelessWidget {
                           child: GestureDetector(
                             onVerticalDragUpdate: _onVerticalGesture,
                             child: Container(
+                              padding: EdgeInsets.all(defaultHeight),
                               color: Color(0xFFEAEAEA),
+                              alignment: Alignment.topLeft,
+                              child: AnimatedSwitcher(
+                                duration: panelTransition,
+                                child: controller.homeState == HomeState.normal
+                                    ? CardShortView(controller: controller)
+                                    : CartDetailsView(controller: controller),
+                              ),
                             ),
                           ),
                         ),
