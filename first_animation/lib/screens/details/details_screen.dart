@@ -6,18 +6,41 @@ import 'package:first_animation/screens/details/components/cart_counter.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({Key? key, required this.product}) : super(key: key);
+  const DetailsScreen(
+      {Key? key, required this.product, required this.onProductAdd})
+      : super(key: key);
 
   final Product product;
+  final VoidCallback onProductAdd;
 
   @override
   _DetailsScreenState createState() => _DetailsScreenState();
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  String cart = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: defaultHeight, vertical: defaultHeight),
+            child: ElevatedButton(
+              onPressed: () {
+                widget.onProductAdd();
+                setState(() {
+                  cart = "Added to Cart";
+                });
+                Navigator.pop(context);
+              },
+              child: Text("Add to cart"),
+            ),
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       appBar: buildAppBar(),
       body: Column(
@@ -31,7 +54,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 Container(
                   width: double.infinity,
                   color: Color(0xFFF8F8F8),
-                  child: Image.asset(widget.product.image!),
+                  child: Hero(
+                    tag: widget.product.title!,
+                    child: Image.asset(widget.product.image!),
+                  ),
                 ),
                 Positioned(
                   bottom: -20,
@@ -40,7 +66,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ],
             ),
           ),
-          SizedBox(height: defaultPadding),
+          SizedBox(height: defaultPadding * 2),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding * 2),
             child: Row(
@@ -59,9 +85,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(defaultPadding * 2),
+            padding: const EdgeInsets.symmetric(
+                horizontal: defaultHeight, vertical: defaultPadding / 2),
             child: Text(
-              "Wearing proper walking shoes is a fundamental element in maintaining the correct walking technique, as well as preventing injury. Shoes are tools. Without the correct tools, you are likely to hurt yourself, making you more prone to suffer further and more severe injuries in the future.A shoe is a type of footwear. It is an item of clothing. You can wear them outside. Shoes come in pairs, with one shoe for each foot. People usually wear shoes in public. They are worn for hygiene, style, and comfort. While there are some shoes that don't need socks to wear, shoes are usually worn with socks.",
+              "Wearing proper walking shoes is a fundamental element in maintaining the correct walking technique, as well as preventing injury. Shoes are tools. Without the correct tools, you are likely to hurt yourself, making you more prone to suffer further and more severe injuries in the future.A shoe is a type of footwear. It is an item of clothing. You can wear them outside. Shoes come in pairs, with one shoe for each foot. They are worn for hygiene, style, and comfort.",
               textAlign: TextAlign.justify,
               style: TextStyle(
                 color: Color(0xFFBDBDBD),
