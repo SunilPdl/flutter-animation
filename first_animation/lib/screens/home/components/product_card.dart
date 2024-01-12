@@ -50,7 +50,7 @@ class ProductCard extends StatelessWidget {
             Text(
               product.title!,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 17,
                 fontWeight: FontWeight.w600,
               ),
             ),
