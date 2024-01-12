@@ -36,7 +36,20 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 });
                 Navigator.pop(context);
               },
-              child: Text("Add to cart"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: primaryColor,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Text(
+                  "Add to cart",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
