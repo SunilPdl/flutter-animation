@@ -84,7 +84,13 @@ class HomeScreen extends StatelessWidget {
                                           FadeTransition(
                                         opacity: animation,
                                         child: DetailsScreen(
-                                            product: products[index]),
+                                          product: products[index],
+                                          onProductAdd: () {
+                                            controller.addProductToCart(
+                                              products[index],
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   );
