@@ -74,9 +74,18 @@ class HomeScreen extends StatelessWidget {
                                 press: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => DetailsScreen(
-                                          product: products[index]),
+                                    PageRouteBuilder(
+                                      transitionDuration:
+                                          const Duration(microseconds: 500),
+                                      reverseTransitionDuration:
+                                          const Duration(microseconds: 500),
+                                      pageBuilder: (context, animation,
+                                              secondaryAnimation) =>
+                                          FadeTransition(
+                                        opacity: animation,
+                                        child: DetailsScreen(
+                                            product: products[index]),
+                                      ),
                                     ),
                                   );
                                 },
