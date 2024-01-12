@@ -1,3 +1,4 @@
+import 'package:first_animation/screens/home/components/cart_details_card.dart';
 import 'package:first_animation/screens/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:first_animation/constants.dart';
@@ -30,8 +31,11 @@ class HomeScreen extends StatelessWidget {
                   builder: (context, BoxConstraints constraints) {
                     return Stack(
                       children: [
-                        Positioned(
-                          top: 0,
+                        AnimatedPositioned(
+                          duration: panelTransition,
+                          top: controller.homeState == HomeState.normal
+                              ? 0
+                              : -headerHeight,
                           left: 0,
                           right: 0,
                           height: headerHeight,
@@ -71,15 +75,18 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Positioned(
+                        AnimatedPositioned(
+                          duration: panelTransition,
                           bottom: 0,
                           left: 0,
                           right: 0,
-                          height: cartBarHeight,
+                          height: controller.homeState == HomeState.normal
+                              ? cartBarHeight
+                              : (constraints.maxHeight - cartBarHeight),
                           child: GestureDetector(
                             onVerticalDragUpdate: _onVerticalGesture,
                             child: Container(
-                              color: Color(0xFFF7F7F7),
+                              color: Color(0xFFEAEAEA),
                             ),
                           ),
                         ),
