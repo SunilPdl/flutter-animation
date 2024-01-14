@@ -18,7 +18,7 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-  String cart = '';
+  String _cartTag = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               onPressed: () {
                 widget.onProductAdd();
                 setState(() {
-                  cart = "Added to Cart";
+                  _cartTag = "_cartTag";
                 });
                 Navigator.pop(context);
               },
@@ -68,7 +68,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   width: double.infinity,
                   color: Color(0xFFF8F8F8),
                   child: Hero(
-                    tag: widget.product.title!,
+                    tag: widget.product.title! + _cartTag,
                     child: Image.asset(widget.product.image!),
                   ),
                 ),
