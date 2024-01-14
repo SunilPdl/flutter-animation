@@ -77,10 +77,9 @@ class HomeScreen extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     PageRouteBuilder(
-                                      transitionDuration:
-                                          const Duration(microseconds: 900),
+                                      transitionDuration: cardlTransition,
                                       reverseTransitionDuration:
-                                          const Duration(microseconds: 500),
+                                          cardlTransition,
                                       pageBuilder: (context, animation,
                                               secondaryAnimation) =>
                                           FadeTransition(
